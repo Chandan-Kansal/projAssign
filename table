@@ -1,0 +1,10 @@
+create table State(
+	id int primary key not null,
+    mot varchar(2),
+    src varchar(30),
+    dest varchar(30),
+    price int,
+    timereq float
+    );
+    
+select * from State;
