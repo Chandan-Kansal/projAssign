@@ -21,7 +21,7 @@ public class BookController {
 	@Autowired
 	Bookservice bookservice;
 	ReqEntity reqentity;
-    Graph graph = new Graph(1000000);
+    Graph graph = new Graph();
 	
 	@PostMapping("/add")
     public void addstate(@RequestBody Book state) {
@@ -39,17 +39,41 @@ public class BookController {
 	        	String d = b.getDest();
 	        	String m = b.getMot();
 	        	int p = b.getPrice();
-	        	float t = b.getTimereq();
+	        	int t = b.getTimereq();
 //	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
 	        	graph.makeGraph(s,d,p,t,m);
 	        }
-	        System.out.println(graph.minimumTimeRoute(graph.stateMappingNumber.get("Delhi"), graph.stateMappingNumber.get("Katra")));
+	        System.out.println(graph.minTime(graph.stateMappingNumber.get("Delhi"), graph.stateMappingNumber.get("Katra")));
 	        return ResponseEntity.of(Optional.of(list));
 	    }
 //	 
-	    @GetMapping("/CheapestPrice")
+//	    @GetMapping("/CheapestPrice")
+//	    @ResponseBody
+//	    public String getMinPrice(@RequestBody ReqEntity reqentity ) {
+//	    	List<Book> list = this.bookservice.findAll();
+////	        if (list.size() <= 0) {
+////	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+////	        }
+//	        for(Book b: list) {
+//	        	String s = b.getSrc();
+//	        	String d = b.getDest();
+//	        	String m = b.getMot();
+//	        	int p = b.getPrice();
+//	        	float t = b.getTimereq();
+//	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
+//	        	graph.makeGraph(s,d,p,t,m);
+//	        }
+//		 	String src1 = reqentity.getSrc();
+//		 	String desc1 = reqentity.getDest();
+//		 	System.out.println(src1+" "+desc1);
+//	        String ans = graph.cheapestRoute(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
+////
+//		 	return ans;
+//	    }
+	    
+	    @GetMapping("/cheapest")
 	    @ResponseBody
-	    public int getMinPrice(@RequestBody ReqEntity reqentity ) {
+	    public String cheap(@RequestBody ReqEntity reqentity ) {
 	    	List<Book> list = this.bookservice.findAll();
 //	        if (list.size() <= 0) {
 //	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -59,16 +83,44 @@ public class BookController {
 	        	String d = b.getDest();
 	        	String m = b.getMot();
 	        	int p = b.getPrice();
-	        	float t = b.getTimereq();
+	        	int t = b.getTimereq();
 //	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
 	        	graph.makeGraph(s,d,p,t,m);
 	        }
+//	        graph.invertMap();
 		 	String src1 = reqentity.getSrc();
 		 	String desc1 = reqentity.getDest();
 		 	System.out.println(src1+" "+desc1);
-	        int ans = graph.minimumTimeRoute(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
+	        String ans = graph.minPrice(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
 //
 		 	return ans;
+	    }
+	    
+	    
+	    @GetMapping("/fastest")
+	    @ResponseBody
+	    public String minimumT(@RequestBody ReqEntity reqentity ) {
+	    	List<Book> list = this.bookservice.findAll();
+//	        if (list.size() <= 0) {
+//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//	        }
+	        for(Book b: list) {
+	        	String s = b.getSrc();
+	        	String d = b.getDest();
+	        	String m = b.getMot();
+	        	int p = b.getPrice();
+	        	int t = b.getTimereq();
+//	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
+	        	graph.makeGraph(s,d,p,t,m);
+	        }
+//	        graph.invertMap();
+		 	String src1 = reqentity.getSrc();
+		 	String desc1 = reqentity.getDest();
+		 	System.out.println(src1+" "+desc1);
+	        String ans = graph.minTime(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
+//
+		 	return ans;
+	    }
 //		 	System.out.println(reqentity.getDest());
 //		 	return 0;
 //	        List<Book> list = this.bookservice.findAll();
@@ -86,7 +138,7 @@ public class BookController {
 //	        }
 //	        System.out.println(graph.minimumTimeRoute(graph.stateMappingNumber.get("Delhi"), graph.stateMappingNumber.get("Katra")));
 //	        return ResponseEntity.of(Optional.of(list));
-	    }
+//	    }
 
 	
 	 

@@ -14,7 +14,7 @@ public class Book {
     private String src;
     private String dest;
 	private int price;
-    private float timereq;
+    private int timereq;
 	public int getId() {
 		return id;
 	}
@@ -45,10 +45,10 @@ public class Book {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public float getTimereq() {
+	public int getTimereq() {
 		return timereq;
 	}
-	public void setTimereq(float timereq) {
+	public void setTimereq(int timereq) {
 		this.timereq = timereq;
 	}
 	
