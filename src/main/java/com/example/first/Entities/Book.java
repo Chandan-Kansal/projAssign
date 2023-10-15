@@ -10,21 +10,21 @@ import javax.persistence.Table;
 public class Book {
 	@Id
     private int id;
-    private String mot;
+    private char mot;
     private String src;
     private String dest;
-	private int price;
-    private int timereq;
+	private float price;
+    private float timereq;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getMot() {
+	public char getMot() {
 		return mot;
 	}
-	public void setMot(String mot) {
+	public void setMot(char mot) {
 		this.mot = mot;
 	}
 	public String getSrc() {
@@ -39,19 +39,18 @@ public class Book {
 	public void setDest(String dest) {
 		this.dest = dest;
 	}
-	public int getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
-	public int getTimereq() {
+	public float getTimereq() {
 		return timereq;
 	}
-	public void setTimereq(int timereq) {
+	public void setTimereq(float timereq) {
 		this.timereq = timereq;
-	}
-	
-	
+	}    
 }
+	
 

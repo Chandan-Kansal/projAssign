@@ -37,63 +37,41 @@ public class BookController {
 	        for(Book b: list) {
 	        	String s = b.getSrc();
 	        	String d = b.getDest();
-	        	String m = b.getMot();
-	        	int p = b.getPrice();
-	        	int t = b.getTimereq();
+	        	char m = b.getMot();
+	        	float p = b.getPrice();
+	        	float t = b.getTimereq();
 //	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
 	        	graph.makeGraph(s,d,p,t,m);
 	        }
 	        System.out.println(graph.minTime(graph.stateMappingNumber.get("Delhi"), graph.stateMappingNumber.get("Katra")));
 	        return ResponseEntity.of(Optional.of(list));
 	    }
-//	 
-//	    @GetMapping("/CheapestPrice")
-//	    @ResponseBody
-//	    public String getMinPrice(@RequestBody ReqEntity reqentity ) {
-//	    	List<Book> list = this.bookservice.findAll();
-////	        if (list.size() <= 0) {
-////	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-////	        }
-//	        for(Book b: list) {
-//	        	String s = b.getSrc();
-//	        	String d = b.getDest();
-//	        	String m = b.getMot();
-//	        	int p = b.getPrice();
-//	        	float t = b.getTimereq();
-//	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
-//	        	graph.makeGraph(s,d,p,t,m);
-//	        }
-//		 	String src1 = reqentity.getSrc();
-//		 	String desc1 = reqentity.getDest();
-//		 	System.out.println(src1+" "+desc1);
-//	        String ans = graph.cheapestRoute(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
-////
-//		 	return ans;
-//	    }
-	    
+	 
 	    @GetMapping("/cheapest")
 	    @ResponseBody
-	    public String cheap(@RequestBody ReqEntity reqentity ) {
+	    public ResponseEntity<KeyValue> cheap(@RequestBody ReqEntity reqentity ) {
+	    	
 	    	List<Book> list = this.bookservice.findAll();
-//	        if (list.size() <= 0) {
-//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//	        }
 	        for(Book b: list) {
 	        	String s = b.getSrc();
 	        	String d = b.getDest();
-	        	String m = b.getMot();
-	        	int p = b.getPrice();
-	        	int t = b.getTimereq();
-//	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
+	        	char m = b.getMot();
+	        	float p = b.getPrice();
+	        	float t = b.getTimereq();
 	        	graph.makeGraph(s,d,p,t,m);
 	        }
-//	        graph.invertMap();
+	        KeyValue output= new KeyValue();
+	        
 		 	String src1 = reqentity.getSrc();
 		 	String desc1 = reqentity.getDest();
 		 	System.out.println(src1+" "+desc1);
+		 	if(graph.stateMappingNumber.get(src1)== null || graph.stateMappingNumber.get(desc1) == null) {
+		 		output.setAns("No Route");
+		 		return ResponseEntity.ok(output);
+		 	}
 	        String ans = graph.minPrice(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
-//
-		 	return ans;
+	        output.setAns(ans);
+	        return ResponseEntity.ok(output);
 	    }
 	    
 	    
@@ -101,60 +79,46 @@ public class BookController {
 	    @ResponseBody
 	    public String minimumT(@RequestBody ReqEntity reqentity ) {
 	    	List<Book> list = this.bookservice.findAll();
-//	        if (list.size() <= 0) {
-//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//	        }
 	        for(Book b: list) {
 	        	String s = b.getSrc();
 	        	String d = b.getDest();
-	        	String m = b.getMot();
-	        	int p = b.getPrice();
-	        	int t = b.getTimereq();
-//	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
+	        	char m = b.getMot();
+	        	float p = b.getPrice();
+	        	float t = b.getTimereq();
 	        	graph.makeGraph(s,d,p,t,m);
 	        }
-//	        graph.invertMap();
+
 		 	String src1 = reqentity.getSrc();
 		 	String desc1 = reqentity.getDest();
 		 	System.out.println(src1+" "+desc1);
+		 	if(graph.stateMappingNumber.get(src1)== null || graph.stateMappingNumber.get(desc1) == null) {
+		 		return "No Route";
+		 	}
 	        String ans = graph.minTime(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
-//
 		 	return ans;
 	    }
-//		 	System.out.println(reqentity.getDest());
-//		 	return 0;
-//	        List<Book> list = this.bookservice.findAll();
-//	        if (list.size() <= 0) {
-//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//	        }
-//	        for(Book b: list) {
-//	        	String s = b.getSrc();
-//	        	String d = b.getDest();
-//	        	String m = b.getMot();
-//	        	int p = b.getPrice();
-//	        	float t = b.getTimereq();
-////	        	System.out.println(s+" "+d+" "+m+" "+p+" "+t);
-//	        	graph.makeGraph(s,d,p,t,m);
-//	        }
-//	        System.out.println(graph.minimumTimeRoute(graph.stateMappingNumber.get("Delhi"), graph.stateMappingNumber.get("Katra")));
-//	        return ResponseEntity.of(Optional.of(list));
-//	    }
 
-	
-	 
-//	 @GetMapping("/cheapestRoute")
-//	 public ResponseEntity<List<Book>> getState() {
-//	        List<Book> list = this.bookservice.findAll();
-//	        for(Book b: list) {
-//	        	System.out.println(b.getSrc());
-//	 
-//	        }
-//	        
-//	        if (list.size() <= 0) {
-//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//
-//	        }
-//	        return ResponseEntity.of(Optional.of(list));
-//	    }
+	    @GetMapping("/allroute")
+	    @ResponseBody
+	    public String allPath(@RequestBody ReqEntity reqentity ) {
+	    	List<Book> list = this.bookservice.findAll();
+	        for(Book b: list) {
+	        	String s = b.getSrc();
+	        	String d = b.getDest();
+	        	char m = b.getMot();
+	        	float p = b.getPrice();
+	        	float t = b.getTimereq();
+	        	graph.makeGraph(s,d,p,t,m);
+	        }
+
+		 	String src1 = reqentity.getSrc();
+		 	String desc1 = reqentity.getDest();
+		 	System.out.println(src1+" "+desc1);
+		 	if(graph.stateMappingNumber.get(src1)== null || graph.stateMappingNumber.get(desc1) == null) {
+		 		return "No Route";
+		 	}
+	        String ans = graph.allRoute(graph.stateMappingNumber.get(src1),graph.stateMappingNumber.get(desc1));
+		 	return ans;
+	    }
 
 }
