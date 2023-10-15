@@ -8,3 +8,155 @@ create table State(
     );
     
 select * from State;
+
+
+
+All Data
+
+
+[
+    {
+        "id": 1,
+        "mot": "F",
+        "src": "Delhi",
+        "dest": "Chandigarh",
+        "price": 2000.0,
+        "timereq": 2.0
+    },
+    {
+        "id": 2,
+        "mot": "B",
+        "src": "Delhi",
+        "dest": "Chandigarh",
+        "price": 700.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 3,
+        "mot": "T",
+        "src": "Delhi",
+        "dest": "Patiala",
+        "price": 1100.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 4,
+        "mot": "B",
+        "src": "Delhi",
+        "dest": "Patiala",
+        "price": 900.0,
+        "timereq": 8.0
+    },
+    {
+        "id": 5,
+        "mot": "F",
+        "src": "Delhi",
+        "dest": "Jammu",
+        "price": 7000.0,
+        "timereq": 4.2
+    },
+    {
+        "id": 6,
+        "mot": "B",
+        "src": "Jammu",
+        "dest": "Katra",
+        "price": 200.0,
+        "timereq": 2.0
+    },
+    {
+        "id": 7,
+        "mot": "T",
+        "src": "Jammu",
+        "dest": "Pataiala",
+        "price": 1100.0,
+        "timereq": 11.0
+    },
+    {
+        "id": 8,
+        "mot": "T",
+        "src": "Patiala",
+        "dest": "Katra",
+        "price": 800.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 9,
+        "mot": "B",
+        "src": "Delhi",
+        "dest": "Katra",
+        "price": 700.0,
+        "timereq": 7.0
+    },
+    {
+        "id": 10,
+        "mot": "F",
+        "src": "Chandigarh",
+        "dest": "Delhi",
+        "price": 2000.0,
+        "timereq": 2.0
+    },
+    {
+        "id": 11,
+        "mot": "B",
+        "src": "Chandigarh",
+        "dest": "Delhi",
+        "price": 700.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 12,
+        "mot": "T",
+        "src": "Patiala",
+        "dest": "Delhi",
+        "price": 1100.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 13,
+        "mot": "B",
+        "src": "Patiala",
+        "dest": "Delhi",
+        "price": 900.0,
+        "timereq": 8.0
+    },
+    {
+        "id": 14,
+        "mot": "F",
+        "src": "Jammu",
+        "dest": "Delhi",
+        "price": 7000.0,
+        "timereq": 4.2
+    },
+    {
+        "id": 15,
+        "mot": "B",
+        "src": "Katra",
+        "dest": "Jammu",
+        "price": 200.0,
+        "timereq": 2.0
+    },
+    {
+        "id": 16,
+        "mot": "T",
+        "src": "Patiala",
+        "dest": "Jammu",
+        "price": 1100.0,
+        "timereq": 11.0
+    },
+    {
+        "id": 17,
+        "mot": "T",
+        "src": "Katra",
+        "dest": "Patiala",
+        "price": 800.0,
+        "timereq": 6.0
+    },
+    {
+        "id": 18,
+        "mot": "B",
+        "src": "Katra",
+        "dest": "Patiala",
+        "price": 700.0,
+        "timereq": 7.0
+    }
+]
