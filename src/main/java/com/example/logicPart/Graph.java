@@ -35,7 +35,7 @@ class Edge {
 
 public class Graph {
 	static List<List<Edge>> adj = new ArrayList<>();
-    public Map<String, Integer> stateMappingNumber = new HashMap<>();
+    public static Map<String, Integer> stateMappingNumber = new HashMap<>();
     public static  Map<Integer, String> numberMappingState = new HashMap<>();
     public static int countOfState;
 
@@ -62,7 +62,10 @@ public class Graph {
         }
     }
     public String allRoute(int source, int destination) {
-        int[] vis = new int[countOfState];
+        for (Map.Entry<String, Integer> entry : stateMappingNumber.entrySet()) {
+            numberMappingState.put(entry.getValue(), entry.getKey());
+        }
+    	int[] vis = new int[countOfState];
         StringBuilder ans = new StringBuilder();
         StringBuilder path = new StringBuilder();
         dfs(source, destination, vis, ans, path);
@@ -89,6 +92,7 @@ public class Graph {
                 path.append("_");
                 path.append(numberMappingState.get(it.destination));
                 dfs(it.destination, d, vis, ans, path);
+                path.append("\n");
                 pathremove(path);
             }
         }
